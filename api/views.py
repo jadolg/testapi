@@ -11,12 +11,18 @@ from rest_framework.response import Response
 @api_view(['POST', 'GET'])
 def ping(request):
     if request.method == 'POST':
-        data = {'subject':request.data.get('headers[Subject]'),
-         'text':request.data.get('plain'),
-         'from':request.data.get('envelope[from]')}
-        txt = json.dumps(data)
-        email = EmailMessage("databack", txt, to=["diazorozcoj@gmail.com", ])
+        body = ''
+        if request.data.get('plain') != '':
+            body = request.data.get('plain')
+        elif request.data.get('html') != '':
+            body = request.data.get('html')
+
+        data = {'subject': request.data.get('headers[Subject]'),
+                'body': body,
+                'from': request.data.get('envelope[from]')}
+
+        email = EmailMessage('databack', json.dumps(data), to=[data['from'], ])
         email.send()
-        return Response({'status': 'ok', 'data':request.data})
+        return Response({'status': 'ok', 'data': request.data})
     elif request.method == 'GET':
         return Response({'status': 'ok'})
