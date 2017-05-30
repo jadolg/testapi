@@ -1,1 +1,8 @@
 # Created by .ignore support plugin (hsz.mobi)
+.gitignore
+.idea/
+api/__pycache__/
+api/migrations/__pycache__/
+db.sqlite3
+templates/
+testapi/__pycache__/

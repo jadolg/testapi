@@ -25,8 +25,18 @@ SECRET_KEY = 'chrzpkzj2)0x&w^5(ob7v#k2s=g35t95%384o65zv5#%=y9dh2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+
+EMAIL_HOST_USER = 'mdownloader3@gmail.com'
+
+DEFAULT_FROM_EMAIL = 'mdownloader3@gmail.com'
+SERVER_EMAIL = 'mdownloader3@gmail.com'
+
+EMAIL_HOST_PASSWORD = 'jopwurzvwmbyriaj'
 
 # Application definition
 
